@@ -1,0 +1,12 @@
+patch:
+  parameter_id: 0x20
+  parameter_sub_id: 0x00
+  volume:
+    id: 0x20
+
+preset_select:
+  parameter_id: 0x7F
+  parameter_sub_id: 0x00
+  max_value: 0x34
+  min_value: 0x00
+  id: 0x00

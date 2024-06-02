@@ -1,7 +1,76 @@
-from enum import Enum
+"""Parameters available for sysex message to a Roland device.
+
+References:
+    https://cdn.roland.com/assets/media/pdf/TB-3_MI_1.pdf
+"""
+
+from importlib.resources import open_text
+from dataclasses import dataclass, is_dataclass
+
+import yaml
+
+from src import resources
 
 
-class Patch(Enum):
-    parameter_id = 0x20
-    parameter_sub_id = 0x00
-    VOLUME = 0x20
+def _nested_dataclass(*args, **kwargs):
+
+    def wrapper(check_class):
+
+        # passing class to investigate
+        check_class = dataclass(check_class, **kwargs)
+        o_init = check_class.__init__
+
+        def __init__(self, *args, **kwargs):
+
+            for name, value in kwargs.items():
+
+                # getting field type
+                ft = check_class.__annotations__.get(name, None)
+
+                if is_dataclass(ft) and isinstance(value, dict):
+                    obj = ft(**value)
+                    kwargs[name] = obj
+                o_init(self, *args, **kwargs)
+
+        check_class.__init__ = __init__
+
+        return check_class
+
+    return wrapper(args[0]) if args else wrapper
+
+
+@dataclass
+class Parameter:
+    parameter_id: int
+    parameter_sub_id: int
+
+
+@dataclass
+class ParameterValue:
+    id: int
+    max_value: int = 0x2F
+    min_value: int = 0x00
+    unknown_1: int = 0x01
+    unknown_2: int = 0x00
+
+
+@_nested_dataclass
+class Patch(Parameter):
+    volume: ParameterValue
+
+
+@_nested_dataclass
+class ProgramSelect(ParameterValue, Parameter):
+    ...
+
+
+@_nested_dataclass
+class RolandSysex:
+    patch: Patch
+    preset_select: ProgramSelect
+
+
+roland_sysex: RolandSysex = RolandSysex(
+    **yaml.safe_load(open_text(resources, "roland_sysex.yaml"))
+)
+
