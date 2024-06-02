@@ -23,6 +23,7 @@ from functools import partial
 from src.ble_midi import create_sysex_packet, bytes_to_hex, get_timestamp
 from src import LOGGER
 from src.sysex import NonRealTime
+from src.roland_sysex import Parameter, ParameterValue
 
 _ROLAND_VENDOR_ID = 0x41
 _KATANA_DEVICE_ID = 0x10
@@ -34,8 +35,14 @@ def get_checksum(*data):
     return (128 - checksum) % 128
 
 
-def create_katana_packet(*data):
-    """See https://cdn.roland.com/assets/media/pdf/TB-3_MI_1.pdf"""
+def create_roland_sysex_packet(*data):
+    """Create a packet according to Roland specifications for sysex.
+    
+    For a higher level API use create_katana_packet
+    
+    References:
+        https://cdn.roland.com/assets/media/pdf/TB-3_MI_1.pdf
+    """
     LOGGER.info(f"Preparing packet for {bytes_to_hex(data)}")
     timestamp = get_timestamp()
     checksum = get_checksum(*data)
@@ -54,6 +61,18 @@ def create_katana_packet(*data):
     LOGGER.debug(f"Packet produced {bytes_to_hex(packet)}")
 
     return packet
+
+
+def create_katana_packet(parameter: Parameter, parameter_config: ParameterValue, value: int):
+    """High level API to create a Roland sysex packet specifically for the Katana:GO."""
+    return create_roland_sysex_packet(
+        parameter.parameter_id,
+        parameter.parameter_sub_id,
+        parameter_config.id,
+        parameter_config.unknown_1,
+        value,
+        parameter_config.unknown_2,
+    )
 
 
 def start_sequence():

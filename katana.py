@@ -79,12 +79,9 @@ connection = Bluetooth.cli(config)
 # volume to max
 print("VOLUME MAX")
 r = create_katana_packet(
-    roland_sysex.patch.parameter_id,
-    roland_sysex.patch.parameter_sub_id,
-    roland_sysex.patch.volume.id,
-    roland_sysex.patch.volume.unknown_1,  # TODO what is it?
-    roland_sysex.patch.volume.max_value,
-    roland_sysex.patch.volume.unknown_2,  # TODO what is it?
+    roland_sysex.patch,
+    roland_sysex.patch.volume,
+    roland_sysex.patch.volume.max_value
 )
 connection.send(r)
 
@@ -92,12 +89,9 @@ sleep(5)
 print("VOLUME MIN")
 # volume to min
 r = create_katana_packet(
-    roland_sysex.patch.parameter_id,
-    roland_sysex.patch.parameter_sub_id,
-    roland_sysex.patch.volume.id,
-    roland_sysex.patch.volume.unknown_1,  # TODO what is it?
-    roland_sysex.patch.volume.min_value,
-    roland_sysex.patch.volume.unknown_2,  # TODO what is it?
+    roland_sysex.patch,
+    roland_sysex.patch.volume,
+    roland_sysex.patch.volume.min_value
 )
 connection.send(r)
 sleep(5)
@@ -105,26 +99,20 @@ sleep(5)
 # volume to middle
 print("VOLUME MIDDLE")
 r = create_katana_packet(
-    roland_sysex.patch.parameter_id,
-    roland_sysex.patch.parameter_sub_id,
-    roland_sysex.patch.volume.id,
-    roland_sysex.patch.volume.unknown_1,  # TODO what is it?
-    roland_sysex.patch.volume.max_value // 2,
-    roland_sysex.patch.volume.unknown_2,  # TODO what is it?
+    roland_sysex.patch,
+    roland_sysex.patch.volume,
+    roland_sysex.patch.volume.max_value // 2
 )
 connection.send(r)
-sleep(5)
+sleep(1)
 
 # iterate over the presets
 for preset_index in range(roland_sysex.preset_select.max_value):
     print("PRESET", preset_index)
     r = create_katana_packet(
-        roland_sysex.preset_select.parameter_id,
-        roland_sysex.preset_select.parameter_sub_id,
-        roland_sysex.preset_select.id,
-        roland_sysex.preset_select.unknown_1,  # TODO what is it?
-        preset_index,
-        roland_sysex.preset_select.unknown_2,  # TODO what is it?
+        roland_sysex.preset_select,
+        roland_sysex.preset_select,
+        preset_index
     )
     connection.send(r)
     sleep(1)
