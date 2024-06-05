@@ -1,18 +1,4 @@
 """Roland uses (exclusively?) sysex to command.
-The custom part of the packet (after what the MIDI protocol defines) seems to be as follow:
-
-    - unknown TODO (constant?)
-    - unknown TODO (constant?)
-    - unknown TODO (constant?)
-    - Parameter ID (see roland_midi.py)
-    - Parameter Sub ID (see roland_midi.py)
-    - Parameter option (see roland_midi.py)
-    - unknown TODO (I guess for multidimension?)
-    - Parameter value
-    - unknown TODO (I guess for mutlidimension?)
-    - checksum
-    - timestamp
-
 
 References:
     Roland TB-3 Midi implementation: https://cdn.roland.com/assets/media/pdf/TB-3_MI_1.pdf
@@ -76,7 +62,7 @@ def create_katana_packet(parameter: Parameter, parameter_config: ParameterValue,
 
 
 def start_sequence():
-    """A serie a packets sent just after connecting.
+    """A series a packets sent just after connecting.
 
     Unsure of their purpose"""
     create_packet = partial(
