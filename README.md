@@ -80,7 +80,6 @@ HEADER:TIMESTAMP:START_BYTE:VENDOR_ID:DEVICE_ID:MODEL_ID:<SYSEX part>:END_BYTE
 R_UNKNOWN:R_UNKNOWN:R_UNKNOWN:R_PARAMETER_ID:R_PARAMETER_SUBID:CMD_ID:VALUE_1:VALUE_2:VALUE_3:R_CHECKSUM:TIMESTAMP
 ```
 
-
 - `R_UNKNOWN`: constants, but no idea what it represents
 - `R_PARAMETER_ID`: indicates a "category" of commands (for example: "master controls")
 - `R_PARAMETER_SUBID`: indicates a "subcategory" of commands. Constants within a R_PARAMETER_ID
