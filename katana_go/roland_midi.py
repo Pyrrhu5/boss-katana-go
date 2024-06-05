@@ -6,10 +6,10 @@ References:
 
 from functools import partial
 
-from src.ble_midi import create_sysex_packet, bytes_to_hex, get_timestamp
-from src import LOGGER
-from src.sysex import NonRealTime
-from src.roland_sysex import Parameter, ParameterValue
+from katana_go.ble_midi import create_sysex_packet, bytes_to_hex, get_timestamp
+from katana_go import LOGGER
+from katana_go.sysex import NonRealTime
+from katana_go.roland_sysex import Parameter, ParameterValue
 
 _ROLAND_VENDOR_ID = 0x41
 _KATANA_DEVICE_ID = 0x10

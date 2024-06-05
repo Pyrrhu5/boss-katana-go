@@ -10,7 +10,6 @@ References:
     Vendors ID: https://electronicmusic.fandom.com/wiki/List_of_MIDI_Manufacturer_IDs
 """
 
-from src import LOGGER
 from time import time
 
 

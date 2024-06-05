@@ -10,7 +10,7 @@ from typing import Optional
 
 import yaml
 
-from src import resources
+from katana_go import resources
 
 
 def _nested_dataclass(*args, **kwargs):

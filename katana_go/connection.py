@@ -5,8 +5,8 @@ from typing import Optional
 from bleak import BleakScanner, BleakClient
 from bleak.backends.device import BLEDevice
 
-from src import LOGGER
-from src.config import Config
+from katana_go import LOGGER
+from katana_go.config import Config
 
 
 class Bluetooth:

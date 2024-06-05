@@ -1,9 +1,9 @@
 from time import sleep
 
-from src.connection import Bluetooth
-from src.config import Config
-from src.roland_midi import create_katana_packet
-from src.roland_sysex import roland_sysex
+from katana_go.connection import Bluetooth
+from katana_go.config import Config
+from katana_go.roland_midi import create_katana_packet
+from katana_go.roland_sysex import roland_sysex
 
 
 config = Config()

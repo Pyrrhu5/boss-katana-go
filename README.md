@@ -29,10 +29,10 @@ pip install -r requirements.txt
 ## Usage examples
 
 ```python
-from src.connection import Bluetooth
-from src.config import Config
-from src.roland_midi import create_katana_packet, create_roland_packet
-from src.roland_sysex import roland_sysex
+from katana_go.connection import Bluetooth
+from katana_go.config import Config
+from katana_go.roland_midi import create_katana_packet, create_roland_packet
+from katana_go.roland_sysex import roland_sysex
 
 config = Config()
 connection = Bluetooth.cli(config)  # Will ask for the device at first run
