@@ -55,9 +55,9 @@ def create_katana_packet(parameter: Parameter, parameter_config: ParameterValue,
         parameter.parameter_id,
         parameter.parameter_sub_id,
         parameter_config.id,
-        parameter_config.unknown_1,
+        parameter_config.value_1,
         value,
-        parameter_config.unknown_2,
+        parameter_config.value_2,
     )
 
 

@@ -4,6 +4,20 @@ A package to interact with Boss' Katana:GO amp via bluetooth.
 
 Only implements sending commands to the Katana:GO, not receiving.
 
+The elements not in this list are not planned to be implemented.
+Push requests are welcome.
+
+Command | Implemented?
+--- | ---
+Master volume | :white_check_mark:
+Master gain | :white_check_mark:
+Equalizer Bass | :white_check_mark:
+Equalizer Middle | :white_check_mark:
+Equalizer Treble | :white_check_mark:
+Equalizer Presence | :white_check_mark:
+Cab resonance | :black_square_button:
+Presets | :black_square_button:
+
 ## Installation
 
 ```shell
@@ -27,9 +41,9 @@ connection = Bluetooth.cli(config)  # Will ask for the device at first run
 # See roland_sysex for the options
 print("VOLUME MAX")
 r = create_katana_packet(
-    roland_sysex.patch,
-    roland_sysex.patch.volume,
-    roland_sysex.patch.volume.max_value
+    roland_sysex.amp,
+    roland_sysex.amp.volume,
+    roland_sysex.amp.volume.max_value
 )
 connection.send(r)
 

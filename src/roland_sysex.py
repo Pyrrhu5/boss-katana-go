@@ -6,6 +6,7 @@ References:
 
 from importlib.resources import open_text
 from dataclasses import dataclass, is_dataclass
+from typing import Optional
 
 import yaml
 
@@ -48,15 +49,22 @@ class Parameter:
 @dataclass
 class ParameterValue:
     id: int
+    value_1: int
+    value_2: int
     max_value: int = 0x2F
     min_value: int = 0x00
-    unknown_1: int = 0x01
-    unknown_2: int = 0x00
+    value_3: Optional[int] = None
 
 
 @_nested_dataclass
-class Patch(Parameter):
+class Amp(Parameter):
+    """Control the main settings of the amplifier."""
     volume: ParameterValue
+    gain: ParameterValue
+    bass: ParameterValue
+    middle: ParameterValue
+    treble: ParameterValue
+    presence: ParameterValue
 
 
 @_nested_dataclass
@@ -66,7 +74,7 @@ class ProgramSelect(ParameterValue, Parameter):
 
 @_nested_dataclass
 class RolandSysex:
-    patch: Patch
+    amp: Amp
     preset_select: ProgramSelect
 
 

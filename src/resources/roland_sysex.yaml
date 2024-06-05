@@ -1,8 +1,30 @@
-patch:
+amp:
   parameter_id: 0x20
   parameter_sub_id: 0x00
   volume:
     id: 0x20
+    value_1: 0x01
+    max_value: 0x64
+  gain:
+    id: 0x20
+    value_1: 0x0
+    max_value: 0x64
+  bass:
+    id: 0x20
+    value_1: 0x3
+    max_value: 0x64
+  middle:
+    id: 0x20
+    value_1: 0x4
+    max_value: 0x64
+  treble:
+    id: 0x20
+    value_1: 0x5
+    max_value: 0x64
+  presence:
+    id: 0x20
+    value_1: 0x0a
+    max_value: 0x64
 
 preset_select:
   parameter_id: 0x7F
