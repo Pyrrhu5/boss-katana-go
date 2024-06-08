@@ -131,4 +131,6 @@ Requirements:
    2. Modify it first as there is a lot of hard-coded stuff
 8. Go luck, have fun
 
+### Outputs
 
+You can find the analyzed and raw outputs of a sniffing session in this [Gist](https://gist.github.com/Pyrrhu5/f0ef189cd1d51a3dcc85c578a3849884)
