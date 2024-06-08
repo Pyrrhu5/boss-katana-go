@@ -59,7 +59,6 @@ class Bluetooth:
                 message += f"[{index}] - {device.name} {device.address}\n"
             device_choosen = input(message)
             address = devices[int(device_choosen)].address
-            print(address)
             config.device_bluetooth_address = address
         else:
             address = config.device_bluetooth_address

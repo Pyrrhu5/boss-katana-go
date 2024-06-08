@@ -55,9 +55,8 @@ def create_katana_packet(parameter: Parameter, parameter_config: ParameterValue,
         parameter.parameter_id,
         parameter.parameter_sub_id,
         parameter_config.id,
-        parameter_config.value_1,
-        value,
-        parameter_config.value_2,
+        parameter_config.value_1 if parameter_config.value_1 is not None else value,
+        parameter_config.value_2 if parameter_config.value_2 is not None else value,
     )
 
 

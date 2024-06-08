@@ -7,16 +7,16 @@ Only implements sending commands to the Katana:GO, not receiving.
 The elements not in this list are not planned to be implemented.
 Push requests are welcome.
 
-Command | Implemented?
---- | ---
-Master volume | :white_check_mark:
-Master gain | :white_check_mark:
-Equalizer Bass | :white_check_mark:
-Equalizer Middle | :white_check_mark:
-Equalizer Treble | :white_check_mark:
-Equalizer Presence | :white_check_mark:
-Cab resonance | :black_square_button:
-Presets | :black_square_button:
+Command | Implemented? | Pass tests?
+--- | --- | ---
+Master volume | :white_check_mark: | :white_check_mark:
+Master gain | :white_check_mark: | :white_check_mark:
+Equalizer Bass | :white_check_mark: |:white_check_mark:
+Equalizer Middle | :white_check_mark: |:white_check_mark:
+Equalizer Treble | :white_check_mark: |:white_check_mark:
+Equalizer Presence | :white_check_mark: | :white_check_mark:
+Cab resonance | :black_square_button: | :black_square_button:
+Presets | :black_square_button: | :black_square_button:
 
 ## Installation
 

@@ -25,7 +25,15 @@ def _simple_parameters_test(connection, parameter: Parameter, parameter_config: 
 
 def test_all(connection):
     for parameter in [roland_sysex.amp]:
-        for parameter_config in [parameter.volume, parameter.gain, parameter.bass, parameter.middle, parameter.treble]:
+        for parameter_name, parameter_config in {
+            "volume":parameter.volume,
+            "gain": parameter.gain,
+            "bass": parameter.bass,
+            "middle": parameter.middle,
+            "treble": parameter.treble,
+            "amp_presence": parameter.presence,
+        }.items():
+            LOGGER.info(f"**** Testing {parameter_name.upper()}")
             _simple_parameters_test(connection, parameter, parameter_config)
 
 
