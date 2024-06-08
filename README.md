@@ -20,10 +20,18 @@ Presets | :black_square_button:
 
 ## Installation
 
+With [Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
+
+```shell
+poetry install
+```
+
+With pip
+
 ```shell
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install .
 ```
 
 ## Usage examples
