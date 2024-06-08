@@ -25,6 +25,14 @@ amp:
     id: 0x20
     value_1: 0x0a
     max_value: 0x64
+  amp_selection:
+    id: 0x20
+    value_1: 0x0c
+    max_value: 0x04
+  amp_variation:
+    id: 0x20
+    value_1: 0x0d
+    max_value: 0x01
 
 preset_select:
   parameter_id: 0x7F

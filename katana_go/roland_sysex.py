@@ -65,6 +65,8 @@ class Amp(Parameter):
     middle: ParameterValue
     treble: ParameterValue
     presence: ParameterValue
+    amp_selection: ParameterValue
+    amp_variation: ParameterValue
 
 
 @_nested_dataclass

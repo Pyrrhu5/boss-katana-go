@@ -32,6 +32,8 @@ def test_all(connection):
             "middle": parameter.middle,
             "treble": parameter.treble,
             "amp_presence": parameter.presence,
+            "amp_selection": parameter.amp_selection,
+            "amp_variation": parameter.amp_variation,
         }.items():
             LOGGER.info(f"**** Testing {parameter_name.upper()}")
             _simple_parameters_test(connection, parameter, parameter_config)
