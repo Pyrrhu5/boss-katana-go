@@ -22,8 +22,7 @@ def _simple_parameters_test(connection, parameter: Parameter, parameter_config: 
             connection.send(packet)
             sleep(5)
 
-
-def test_all(connection):
+def test_amp(connection):
     for parameter in [roland_sysex.amp]:
         for parameter_name, parameter_config in {
             "volume":parameter.volume,
@@ -38,7 +37,15 @@ def test_all(connection):
             LOGGER.info(f"**** Testing {parameter_name.upper()}")
             _simple_parameters_test(connection, parameter, parameter_config)
 
+def test_presets(connection):
+    LOGGER.info("**** Testing PRESETS")
+    _simple_parameters_test(connection, roland_sysex.preset_select, roland_sysex.preset_select)
+
+def test_all(connection):
+    test_amp(connection)
+    test_presets(connection)
+
 
 if __name__ == "__main__":
     connection = setup()
-    test_all(connection)
+    test_presets(connection)

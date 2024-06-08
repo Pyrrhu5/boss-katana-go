@@ -70,14 +70,14 @@ class Amp(Parameter):
 
 
 @_nested_dataclass
-class ProgramSelect(ParameterValue, Parameter):
+class PresetSelect(ParameterValue, Parameter):
     ...
 
 
 @_nested_dataclass
 class RolandSysex:
     amp: Amp
-    preset_select: ProgramSelect
+    preset_select: PresetSelect
 
 
 roland_sysex: RolandSysex = RolandSysex(
