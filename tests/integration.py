@@ -33,6 +33,7 @@ def test_amp(connection):
             "amp_presence": parameter.presence,
             "amp_selection": parameter.amp_selection,
             "amp_variation": parameter.amp_variation,
+            "cab_resonance": parameter.cab_resonance,
         }.items():
             LOGGER.info(f"**** Testing {parameter_name.upper()}")
             _simple_parameters_test(connection, parameter, parameter_config)
@@ -48,4 +49,4 @@ def test_all(connection):
 
 if __name__ == "__main__":
     connection = setup()
-    test_presets(connection)
+    test_all(connection)

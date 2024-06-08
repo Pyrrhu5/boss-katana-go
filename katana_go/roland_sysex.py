@@ -67,6 +67,7 @@ class Amp(Parameter):
     presence: ParameterValue
     amp_selection: ParameterValue
     amp_variation: ParameterValue
+    cab_resonance: ParameterValue
 
 
 @_nested_dataclass

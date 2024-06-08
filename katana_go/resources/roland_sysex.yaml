@@ -33,6 +33,10 @@ amp:
     id: 0x20
     value_1: 0x0d
     max_value: 0x01
+  cab_resonance:
+    id: 0x10
+    value_1: 0x01
+    max_value: 0x03
 
 preset_select:
   parameter_id: 0x7F

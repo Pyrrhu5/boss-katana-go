@@ -19,7 +19,7 @@ Equalizer Treble | :white_check_mark: |:white_check_mark:
 Equalizer Presence | :white_check_mark: | :white_check_mark:
 Amp selection | :white_check_mark: | :white_check_mark:
 Amp variation | :white_check_mark: | :white_check_mark:
-Cab resonance | :black_square_button: | :black_square_button:
+Cab resonance | :white_check_mark: | :white_check_mark:
 Presets | :black_square_button: | :black_square_button:
 
 </center>
