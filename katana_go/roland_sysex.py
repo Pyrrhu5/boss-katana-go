@@ -49,8 +49,8 @@ class Parameter:
 @dataclass
 class ParameterValue:
     id: int
-    value_1: int
-    value_2: int
+    value_1: int = 0
+    value_2: int = 0
     max_value: int = 0x2F
     min_value: int = 0x00
     value_3: Optional[int] = None
