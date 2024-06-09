@@ -16,14 +16,19 @@ from time import time
 def _generate_header(timestamp: int):
     """Generates the BLE MIDI header byte."""
 
-    # The header byte has the MSB set to 0
-    # The remaining 7 bits represents the timestamp
-    header_byte = 0x80 | (timestamp & 0x7F)
+    # Extract the upper 6 bits of the 13-bit timestamp
+    upper_six_bits = (timestamp >> 7) & 0x3F
 
+    # Construct the header byte
+    # Bit 7 (start bit) = 1
+    # Bit 6 (reserved) = 0
+    # Bits 0-5 = upper 6 bits of the timestamp
+    header_byte = 0x80 | upper_six_bits
+    
     return header_byte
 
 
-def get_timestamp() -> list[int]:
+def get_timestamp() -> int:
     """Get the current time at the packet format."""
 
     time_ms = int(time() * 1000)
