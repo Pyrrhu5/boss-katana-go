@@ -7,7 +7,6 @@ Only implements sending commands to the Katana:GO, not receiving.
 The elements not in this list are not planned to be implemented.
 Push requests are welcome.
 
-<center>
 
 | Command | Implemented? | Pass tests? |
 | --- | :---: | :---: |
@@ -20,9 +19,8 @@ Equalizer Presence | :white_check_mark: | :white_check_mark:
 Amp selection | :white_check_mark: | :white_check_mark:
 Amp variation | :white_check_mark: | :white_check_mark:
 Cab resonance | :white_check_mark: | :white_check_mark:
-Presets | :black_square_button: | :black_square_button:
+Presets | :white_check_mark: | :white_check_mark:
 
-</center>
 
 ## Installation
 
@@ -45,11 +43,15 @@ pip install .
 ```python
 from katana_go.connection import Bluetooth
 from katana_go.config import Config
-from katana_go.roland_midi import create_katana_packet, create_roland_packet
+from katana_go.roland_midi import create_katana_packet, create_roland_packet, start_sequence
 from katana_go.roland_sysex import roland_sysex
 
 config = Config()
 connection = Bluetooth.cli(config)  # Will ask for the device at first run
+# For some command (presets for example), some random command have to be sent first
+# I have no idea what they do, but it does not work without it
+for p in start_sequence():
+    connection.send(p)
 
 # Use the highest level interface
 # See roland_sysex for the options

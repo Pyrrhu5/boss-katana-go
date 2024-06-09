@@ -5,10 +5,11 @@ References:
 """
 
 from functools import partial
+from importlib.resources import read_text
+import json
 
 from katana_go.ble_midi import create_sysex_packet, bytes_to_hex, get_timestamp
-from katana_go import LOGGER
-from katana_go.sysex import NonRealTime
+from katana_go import LOGGER, resources
 from katana_go.roland_sysex import Parameter, ParameterValue
 
 _ROLAND_VENDOR_ID = 0x41
@@ -51,29 +52,24 @@ def create_roland_sysex_packet(*data):
 
 def create_katana_packet(parameter: Parameter, parameter_config: ParameterValue, value: int):
     """High level API to create a Roland sysex packet specifically for the Katana:GO."""
-    return create_roland_sysex_packet(
+    packet_base = partial(
+        create_roland_sysex_packet,
         parameter.parameter_id,
         parameter.parameter_sub_id,
         parameter_config.id,
         parameter_config.value_1 if parameter_config.value_1 is not None else value,
         parameter_config.value_2 if parameter_config.value_2 is not None else value,
-        # third value only if both previous ones already have a default value
-        # value if parameter_config.value_1 is not None and parameter_config.value_2 is not None else None
     )
+    if parameter_config.value_1 is not None and parameter_config.value_2 is not None:
+        return packet_base(value)
+
+    return packet_base()
 
 
 def start_sequence():
     """A series a packets sent just after connecting.
 
-    Unsure of their purpose"""
-    create_packet = partial(
-        create_sysex_packet,
-        NonRealTime.vendor_id.value,
-        _KATANA_DEVICE_ID,
-        NonRealTime.general_information.value.identity_request.value,
-    )
-    return [
-        create_packet(value)
-        # No idea what these parameters are
-        for value in [0x8C, 0x8F, 0x9A, 0x9A, 0xA0, 0x9D, 0xEC]
-    ]
+    Unsure of their purpose, but the selection of presets does not work without it."""
+    packets = json.loads(read_text(resources, "start_sequence.json"))
+
+    return packets

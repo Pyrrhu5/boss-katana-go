@@ -4,7 +4,7 @@ from time import sleep
 from katana_go import LOGGER
 from katana_go.config import Config
 from katana_go.connection import Bluetooth
-from katana_go.roland_midi import create_katana_packet
+from katana_go.roland_midi import create_katana_packet, start_sequence
 from katana_go.roland_sysex import Parameter, ParameterValue, roland_sysex
 
 def setup():
@@ -49,4 +49,7 @@ def test_all(connection):
 
 if __name__ == "__main__":
     connection = setup()
+    for p in start_sequence():
+        connection.send(p)
+    sleep(5)
     test_all(connection)
